@@ -57,29 +57,28 @@ function do_histogram() {  // THIS NEED TO BE 2 FUNCTIONS???
 // Plotly.newPlot("pie_chart", data, layout);
 // }
 
-// function make_table(filtered_data) {
-    // // select table
-    // let table = d3.select("#data_table");
-    // let table_body = table.select("tbody");
-    // table_body.html(""); // destroy any existing rows
-    
-    // // create table
-    // for (let i = 0; i < filtered_data.length; i++){
-    //   // get data row
-    //   let data_row = filtered_data[i];
-    
-    //   // creates new row in the table
-    //   let row = table_body.append("tr");
-    //   row.append("td").text(data_row.name);
-    //   row.append("td").text(data_row.full_name);
-    //   row.append("td").text(data_row.region);
-    //   row.append("td").text(data_row.latitude);
-    //   row.append("td").text(data_row.longitude);
-    //   row.append("td").text(data_row.launch_attempts);
-    //   row.append("td").text(data_row.launch_successes);
-    //   row.append("td").text(data_row.launch_attempts - data_row.launch_successes);
-    // }
-    // }
+function make_table(filtered_data) {
+    // select table
+    let table = d3.select("#data_table");
+    let table_body = table.select("tbody");
+    table_body.html(""); // destroy any existing rows
+  
+    // create table
+    for (let i = 0; i < filtered_data.length; i++){
+      // get data row
+      let data_row = filtered_data[i];
+  
+      // creates new row in the table
+      let row = table_body.append("tr");
+      row.append("td").text(data_row.name);
+      row.append("td").text(data_row.address);
+      row.append("td").text(data_row.category);
+      row.append("td").text(data_row.latitude);
+      row.append("td").text(data_row.longitude);
+      row.append("td").text(data_row.stars);
+      row.append("td").text(data_row.total_reviews);
+    }
+  }
 
 function make_histogram(histogram_data) {
 
