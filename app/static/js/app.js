@@ -128,5 +128,13 @@ function make_histogram(histogram_data) {
 // d3.select(#filter).on("click", do_histogram);
 
 // Use default on first loading page
-do_dashboard();
+//do_dashboard();
 do_histogram();
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Event Listener for Filter Click
+    d3.select("#stars_filter").on("click", do_dashboard);
+
+    // Use default on first loading page
+    do_dashboard();
+});
