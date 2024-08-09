@@ -1,18 +1,18 @@
-// function do_dashboard() {  // THIS NEED TO BE 2 FUNCTIONS???
-//     // Extract user input
-//     let min_stars = d3.select("#min_stars_filter").property("value");
-//     min_stars = parseInt(min_stars);
+function do_dashboard() {  // THIS NEED TO BE 2 FUNCTIONS???
+    // Extract user input
+    let min_stars = d3.select("#min_stars_filter").property("value");
+    min_stars = parseInt(min_stars);
     
-//     // Make url request
-//     let url_dashboard = `/api/v1.0/get_dashboard/${min_stars}`;
-//     d3.json(url_dashboard).then(function (data) {
+    // Make url request
+    let url_dashboard = `/api/v1.0/get_dashboard/${min_stars}`;
+    d3.json(url_dashboard).then(function (data) {
 
-//     // Create the graphs
-//     make_donut(data.donut_data)
-//     make_table(data.table_data)
-//     make_map(data.map_data)
-//     });
-// }
+    // Create the graphs
+    make_donut(data.donut_data)
+    make_table(data.table_data)
+    make_map(data.map_data)
+    });
+}
 
 function do_histogram() {  // THIS NEED TO BE 2 FUNCTIONS???
     // Extract user input
@@ -29,33 +29,30 @@ function do_histogram() {  // THIS NEED TO BE 2 FUNCTIONS???
     });;    
 }
 
-// function make_donut(filtered_data) {
-// // sort values
-// filtered_data.sort((a, b) => (b.launch_attempts - a.launch_attempts));
 
-// // extract data for pie chart
-// let pie_data = filtered_data.map(x => x.launch_attempts);
-// let pie_labels = filtered_data.map(x => x.name);
+function make_donut(filtered_data) {
+    // // sort values
+    filtered_data.sort((a, b) => (b.popularity - a.popularity));
+    // // extract data for pie chart
+    let donut_data = filtered_data.map(x => x.popularity);
+    let donut_labels = filtered_data.map(x => x.category_name);
+    let trace1 = {
+            values: donut_data,
+            labels: donut_labels,
+            type: 'pie',
+            hoverinfo: 'label+percent+name',
+            hole: 0.4,
+            name: "Category Popularity"
+        }
+    // // Create data array
+    let data = [trace1];
+    // // Apply a title to the layout
+    let layout = {
+        title: "Popular Categories",
+    }
+    Plotly.newPlot("donut_chart", data, layout);
+    }
 
-// let trace1 = {
-//   values: pie_data,
-//   labels: pie_labels,
-//   type: 'pie',
-//   hoverinfo: 'label+percent+name',
-//   hole: 0.4,
-//   name: "Attempts"
-// }
-
-// // Create data array
-// let data = [trace1];
-
-// // Apply a title to the layout
-// let layout = {
-//   title: "SpaceX Launch Attempts",
-// }
-
-// Plotly.newPlot("pie_chart", data, layout);
-// }
 
 function make_table(filtered_data) {
     // select table
@@ -128,8 +125,8 @@ function make_histogram(histogram_data) {
 
 // Event Listener for Filter Click
 // d3.select(#filter).on("click", do_dashboard);
-d3.select(#filter).on("click", do_histogram);
+// d3.select(#filter).on("click", do_histogram);
 
 // Use default on first loading page
-// do_dashboard();
+do_dashboard();
 do_histogram();

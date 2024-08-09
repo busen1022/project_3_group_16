@@ -15,6 +15,7 @@
 // }
 
 function do_histogram() {  // THIS NEED TO BE 2 FUNCTIONS???
+    console.log('test')
     // Extract user input
     let restaurant = d3.select("#restaurant_filter").property("value");
     
@@ -129,7 +130,7 @@ function make_histogram(histogram_data) {
 
 // Event Listener for Filter Click
 // d3.select(#filter).on("click", do_dashboard);
-d3.select(#filter).on("click", do_histogram);
+// d3.select(#filter).on("click", do_histogram);
 
 // Use default on first loading page
 // do_dashboard();
