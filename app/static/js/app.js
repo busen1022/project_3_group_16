@@ -34,8 +34,8 @@ function make_donut(filtered_data) {
     // // sort values
     filtered_data.sort((a, b) => (b.popularity - a.popularity));
     // // extract data for pie chart
-    let donut_data = filtered_data.map(x => x.popularity);
-    let donut_labels = filtered_data.map(x => x.category_name);
+    let donut_data = filtered_data.map(x => x.count);
+    let donut_labels = filtered_data.map(x => x.categories);
     let trace1 = {
             values: donut_data,
             labels: donut_labels,
@@ -128,13 +128,5 @@ function make_histogram(histogram_data) {
 // d3.select(#filter).on("click", do_histogram);
 
 // Use default on first loading page
-//do_dashboard();
+do_dashboard();
 do_histogram();
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Event Listener for Filter Click
-    d3.select("#stars_filter").on("click", do_dashboard);
-
-    // Use default on first loading page
-    do_dashboard();
-});
