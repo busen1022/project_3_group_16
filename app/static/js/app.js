@@ -55,6 +55,7 @@ function make_donut(filtered_data) {
 
 
 function make_table(filtered_data) {
+    console.log("Data passed to make_table:", filtered_data);
     // select table
     let table = d3.select("#data_table");
     let table_body = table.select("tbody");
@@ -64,6 +65,7 @@ function make_table(filtered_data) {
     for (let i = 0; i < filtered_data.length; i++){
       // get data row
       let data_row = filtered_data[i];
+      console.log("Creating row for:", data_row);
   
       // creates new row in the table
       let row = table_body.append("tr");
@@ -128,5 +130,12 @@ function make_histogram(histogram_data) {
 // d3.select(#filter).on("click", do_histogram);
 
 // Use default on first loading page
-do_dashboard();
-do_histogram();
+//do_dashboard();
+//do_histogram();
+document.addEventListener('DOMContentLoaded', function() {
+    // Event Listener for Filter Click
+    d3.select("#stars_filter").on("click", do_dashboard);
+
+    // Use default on first loading page
+    do_dashboard();
+});
