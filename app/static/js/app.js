@@ -114,9 +114,9 @@ function make_table(filtered_data) {
         type: 'bar',
         text: hist_text,
         marker: {
-            color: 'rgba(100,250,100,0.7)',
+            color: 'rgba(253, 184, 39, 1)',
             line: {
-                color: 'rgba(100,250,100,1)',
+                color: 'rgba(253, 184, 39, 1)',
                 width: 1
             }
         }
