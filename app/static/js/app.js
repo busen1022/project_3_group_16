@@ -15,6 +15,7 @@ function do_dashboard() {  // THIS NEED TO BE 2 FUNCTIONS???
 }
 
 function do_histogram() {  // THIS NEED TO BE 2 FUNCTIONS???
+    // console.log('test')
     // Extract user input
     let restaurant = d3.select("#restaurant_filter").property("value");
     
@@ -34,8 +35,8 @@ function make_donut(filtered_data) {
     // // sort values
     filtered_data.sort((a, b) => (b.popularity - a.popularity));
     // // extract data for pie chart
-    let donut_data = filtered_data.map(x => x.count);
-    let donut_labels = filtered_data.map(x => x.categories);
+    let donut_data = filtered_data.map(x => x.popularity);
+    let donut_labels = filtered_data.map(x => x.category_name);
     let trace1 = {
             values: donut_data,
             labels: donut_labels,
@@ -55,7 +56,6 @@ function make_donut(filtered_data) {
 
 
 function make_table(filtered_data) {
-    console.log("Data passed to make_table:", filtered_data);
     // select table
     let table = d3.select("#data_table");
     let table_body = table.select("tbody");
@@ -65,7 +65,6 @@ function make_table(filtered_data) {
     for (let i = 0; i < filtered_data.length; i++){
       // get data row
       let data_row = filtered_data[i];
-      console.log("Creating row for:", data_row);
   
       // creates new row in the table
       let row = table_body.append("tr");
@@ -79,12 +78,34 @@ function make_table(filtered_data) {
     }
   }
 
-function make_histogram(histogram_data) {
+  function make_histogram(histogram_data) {
 
-    // Extract X and Y for Histogram
-    let hist_x = histogram_data.map(item => item.date);
-    let hist_y = histogram_data.map(item => item.review_stars);
-    let hist_text = histogram_data.map(item => item.name);
+    console.log("Histogram Data:", histogram_data); // Log the data
+    console.log("Number of Data Points:", histogram_data.length);
+
+    // Get the selected restaurant from the filter
+    let restaurant = d3.select("#restaurant_filter").property("value");
+
+    // Define the parseDate function
+    let parseDate = d3.timeParse("%Y-%m-%d");
+
+    // Parse the date, Group by Month
+    let dataByMonth = d3.group(
+        histogram_data, 
+        d => d3.timeMonth(parseDate(d.date))
+    );
+
+    // Lists for histogram
+    const hist_x = [];
+    const hist_y = [];
+    const hist_text = [];
+
+    dataByMonth.forEach((values, key) => {
+        hist_x.push(key);
+        let averageStars = d3.mean(values, d => d.review_stars).toFixed(1);
+        hist_y.push(averageStars);
+        hist_text.push(`Reviews: ${values.length}`);
+    });
 
     // Trace for the Histogram
     let hist_trace = {
@@ -101,41 +122,46 @@ function make_histogram(histogram_data) {
         }
     };
 
-    let data = [hist_trace];
+    const data = [hist_trace];
 
-    let layout = {
-        title: "Restaurant Histogram",
+    const layout = {
+        title: {
+            text: `Average Ratings for ${restaurant}`,
+            font: {
+                size: 24
+            }
+        },
         xaxis: {
-            title: 'Date',
-            tickangle: -45
+            tickangle: -45,
+            tickformat: "%b %Y",
+            nticks: 13
         },
         yaxis: {
-            title: 'Review Stars'
+            title: 'Average Review Stars',
+            range: [0, 5.1]
         },
         margin: {
-            l: 50,
-            r: 50,
-            b: 200,
-            t: 50,
+            l: 60,
+            r: 60,
+            b: 125,
+            t: 70,
             pad: 4
         }
     };
 
-    // Render plot with div tag plot
-    Plotly.newPlot("histogram", data, layout)
+    // Render plot with div tag histogram
+    try {
+        Plotly.newPlot("histogram", data, layout);
+    } catch (error) {
+        console.error("Plotly Error:", error);
+    }
+
 };
 
 // Event Listener for Filter Click
-// d3.select(#filter).on("click", do_dashboard);
-// d3.select(#filter).on("click", do_histogram);
+d3.select(`#filter`).on("click", do_dashboard);
+d3.select(`#filter`).on("click", do_histogram);
 
 // Use default on first loading page
-//do_dashboard();
-//do_histogram();
-document.addEventListener('DOMContentLoaded', function() {
-    // Event Listener for Filter Click
-    d3.select("#stars_filter").on("click", do_dashboard);
-
-    // Use default on first loading page
-    do_dashboard();
-});
+do_dashboard();
+do_histogram();

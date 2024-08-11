@@ -71,19 +71,13 @@ def get_dashboard(min_stars):
 def get_histogram(restaurant):
     # try:
         logging.debug(f"Request received for restaurant: {restaurant}")
-        
-        # Convert start_date and end_date to datetime objects to validate the format
-        # start_date_obj = datetime.strptime(start_date, '%Y-%m-%d')
-        # end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
-        
+                      
         # Fetch histogram data
         histogram_data = sql.get_histogram(restaurant)
         
         # Return the data as JSON
         return jsonify(histogram_data)
-    # except ValueError:
-    #     # Handle the error if the date format is incorrect
-    #     return jsonify({"error": "Invalid date format. Use YYYY-MM-DD."}), 400
+    
 
 # Run the App
 if __name__ == '__main__':

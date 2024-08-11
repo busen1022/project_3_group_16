@@ -38,29 +38,12 @@ class SQLHelper():
 
         if restaurant == "ALL":
             where_clause = "1=1"
+            params = {}
         else:
             where_clause = "name = :restaurant"
+            params = {"restaurant": restaurant}
 
-
-        # # Sub in for next commented area
-        # start_clause = '2021-01-01' if start_date == "ALL" else start_date
-        # end_clause = '2022-01-19' if end_date == "ALL" else end_date
         
-        
-        
-        
-        # if start_date == "ALL":
-        #     start_clause = '2021-01-01'
-        # else:
-        #     start_clause = ":start_date"
-
-        # if end_date == "ALL":
-        #     end_clause = '2022-01-19'
-        # else:
-        #     end_clause = ":end_date"
-
-
-
         # build the query
         query = f"""
                     SELECT
@@ -76,18 +59,14 @@ class SQLHelper():
                         name
                 """
 
-        # Added in with sub 2 above
-        params = {
-        "restaurant": restaurant
-        # "start_date": start_clause,
-        # "end_date": end_clause
-        }
-
         df = pd.read_sql(text(query), con = self.engine, params=params)
         data = df.to_dict(orient="records")
         return(data)
 
-   def get_donut(self, min_stars=0):
+    def get_donut(self, min_stars):
+
+        # switch on min_stars
+        min_stars = 0
 
         # build the query
         query = f"""
@@ -108,7 +87,10 @@ class SQLHelper():
         data = df.to_dict(orient="records")
         return(data)
 
-    def get_table(self, min_stars=0):
+    def get_table(self, min_stars):
+
+        # switch on min_stars
+        min_stars = 0
 
         # build the query
         query = f"""
@@ -132,7 +114,10 @@ class SQLHelper():
         data = df.to_dict(orient="records")
         return(data)
 
-    def get_map(self, min_stars=0):
+    def get_map(self, min_stars):
+
+        # switch on min_stars
+        min_stars = 0
 
         # build the query
         query = f"""
