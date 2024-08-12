@@ -1,7 +1,7 @@
 function do_both() {
     // Check for min_stars_filter => run if so
-    if (document.getElementById("min_stars_filter")) {
-        let min_stars = d3.select("#min_stars_filter").property("value");
+    if (document.getElementById("filter")) {
+        let min_stars = d3.select("#filter").property("value");
         min_stars = parseInt(min_stars);
 
         // Make URL request for dashboard
@@ -92,9 +92,11 @@ function make_donut(filtered_data) {
 
 function make_table(filtered_data) {
     // select table
+    $('#data_table').DataTable().clear().destroy();
+
     let table = d3.select("#data_table");
     let table_body = table.select("tbody");
-    table_body.html(""); // destroy any existing rows
+    table_body.html(""); 
   
     // create table
     for (let i = 0; i < filtered_data.length; i++){
@@ -106,11 +108,11 @@ function make_table(filtered_data) {
       row.append("td").text(data_row.name);
       row.append("td").text(data_row.address);
       row.append("td").text(data_row.category);
-      row.append("td").text(data_row.latitude);
-      row.append("td").text(data_row.longitude);
       row.append("td").text(data_row.stars);
       row.append("td").text(data_row.total_reviews);
     }
+
+    $('#data_table').DataTable();
   }
 
   function make_histogram(histogram_data) {

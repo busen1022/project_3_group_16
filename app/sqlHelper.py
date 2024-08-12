@@ -92,8 +92,6 @@ class SQLHelper():
                         name,
                         address,
                         categories as category,
-                        latitude,
-                        longitude,
                         stars,
                         review_count as total_reviews
                     FROM
