@@ -46,7 +46,7 @@
     <!-- add spacing -->
     <br/>
 
-    <!-- Histogram -->
+    <!-- Histogram Header -->
      <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 text-center" style="color: #fdb827;">
@@ -56,129 +56,152 @@
     </div>
     <hr style="border: 0; height: 2px; background-color: #fdb827; margin-left: 100px; margin-right: 100px;" />
     <br/>
-    <div class="container-fluid" style="margin-left: 100px; margin-right: 100px; color: #fdb827;">
-        <div class="col-md-6">
-            <label for="restaurant_filter">Restaurant</label>
-            <select id="restaurant_filter">
-                <option selected>ALL</option>
-                <option>Paseo Nuevo Shopping Center</option>
-                <option>Super Cuca's Taqueria</option>
-                <option>Villa Craft Beer, Wine & Kitchen</option>
-                <option>Eureka!</option>
-                <option>Madam Lu</option>
-                <option>California Pizza Kitchen at Santa Barbara</option>
-                <option>Sam's To Go</option>
-                <option>Venus in Furs</option>
-                <option>Sun Sushi</option>
-                <option>Chipotle Mexican Grill</option>
-                <option>Bossie's Kitchen</option>
-                <option>Gelson's</option>
-                <option>Sandbar</option>
-                <option>The Set</option>
-                <option>Angel Oak</option>
-                <option>Barbareño</option>
-                <option>AR Catering</option>
-                <option>Super Cuca's Restaurant</option>
-                <option>The Natural Cafe</option>
-                <option>The Neighborhood Bar</option>
-                <option>La Super-Rica Taqueria</option>
-                <option>Teru Japanese Cuisine</option>
-                <option>Mr B Restaurant & Cafe</option>
-                <option>Little Kitchen</option>
-                <option>Lito's Take Out</option>
-                <option>Char West</option>
-                <option>Olio E Limone Ristorante</option>
-                <option>Tacos Pipeye</option>
-                <option>Mandarin Palace</option>
-                <option>Louie's California Bistro</option>
-                <option>Taqueria El Buen Gusto</option>
-                <option>Del Pueblo Cafe</option>
-                <option>Gloria's Gourmet Kitchen</option>
-                <option>MIZZA</option>
-                <option>La Tapatia Bakery</option>
-                <option>Norton's Pastrami & Deli</option>
-                <option>Luna Grill</option>
-                <option>Sachi Ramen And Robata Bar</option>
-                <option>Shoreline Beach Cafe</option>
-                <option>El Sitio</option>
-                <option>Derf's Cafe</option>
-                <option>Secret Bao</option>
-                <option>Santo Mezcal</option>
-                <option>Lilly's Tacos</option>
-                <option>The Roundhouse</option>
-                <option>Cali-Forno Pizzeria</option>
-                <option>Milpas Taqueria</option>
-                <option>Sam's to Go - Milpas</option>
-                <option>Arigato Sushi</option>
-                <option>Rudy's Restaurant No 1</option>
-                <option>The Blue Owl</option>
-                <option>Choi's Oriental Market</option>
-                <option>Café Lido</option>
-                <option>Empty Bowl Gourmet Noodle Bar</option>
-                <option>Bettina</option>
-                <option>Your Choice</option>
-                <option>Denny's</option>
-                <option>Galanga Thai Restaurant</option>
-                <option>China Palace</option>
-                <option>Zaytoon</option>
-                <option>El Rincon Alteno</option>
-                <option>Burger Express</option>
-                <option>Lucky Penny</option>
-                <option>Petit Valentien</option>
-                <option>Rudy's</option>
-                <option>Uncle Roccos Famous NY Pizza</option>
-                <option>Garrett's Old Fashioned Restaurant</option>
-                <option>El Sitio</option>
-                <option>The Lark</option>
-                <option>La Playa Azul Cafe</option>
-                <option>Oku</option>
-                <option>Night Lizard Brewing Company</option>
-                <option>Arnoldi's Cafe</option>
-                <option>Joe's Cafe</option>
-                <option>Jill's Place</option>
-                <option>Cody's Cafe</option>
-                <option>Yona Redz</option>
-                <option>Uncorked Wine Tasting and Kitchen</option>
-                <option>China Pavilion</option>
-                <option>Taco Bell</option>
-                <option>Patxi's Pizza</option>
-                <option>Corner Tap Room</option>
-                <option>Moby Dick Restaurant</option>
-                <option>Olio Pizzeria</option>
-                <option>Eller's Doughnut House & Bakery</option>
-                <option>Goat Tree</option>
-                <option>Boathouse at Hendry's Beach</option>
-                <option>The Creekside Restaurant & Bar</option>
-                <option>The Daisy Restaurant</option>
-                <option>Blackbird</option>
-                <option>Via Maestra 42</option>
-                <option>Shang Hai</option>
-                <option>Kyoto</option>
-                <option>Mesa Verde</option>
-                <option>Yellow Belly</option>
-                <option>Mesa Burger - Santa Barbara</option>
-                <option>Convivo Restaurant and Bar</option>
-                <option>The Honor Bar</option>
-                <option>Lemon Tree Inn</option>
-                <option>Cesar's Place</option>
-                <option>Sushi Bar 29</option>
-            </select>
-                                
-            <br><br>
-
-            <button id="filter">Filter!</button>
-        </div>
-        <br/>
-        <hr style="border: 0; height: 2px; background-color: #fdb827; margin-right: 200px;" />
-        <div class="col-md-6">
-            <h4>Restaurants live and die by Customer Reviews!</h4>
-            <p>Let this histogram help you pick a Restaurant this weekend. Pick a restaurant from our drop menu and hover over each bar to see its average rating and how many customers decided it was worth reviewing!</p>
-        </div>
-        <br/>
-        <hr style="border: 0; height: 2px; background-color: #fdb827; margin-right: 200px;" />
-        <br/>
-        <div class="col-md-6">
-            <div id="histogram" style="width: 100%; height: 500px;"></div>
+    <!-- Big Container -->
+    <div class="container-fluid" style="margin-left: 100px; color: #fdb827;">
+        <!-- Row of 2 Columns -->
+        <div class="row">
+            <div class="col-md-6"> <!-- Column # 1 contains 3 items -->
+                <div class="col-md-12"> <!-- Item # 1 -->
+                    <label for="restaurant_filter">Restaurant</label>
+                    <select id="restaurant_filter">
+                        <option selected>ALL</option>
+                        <option>Paseo Nuevo Shopping Center</option>
+                        <option>Super Cuca's Taqueria</option>
+                        <option>Villa Craft Beer, Wine & Kitchen</option>
+                        <option>Eureka!</option>
+                        <option>Madam Lu</option>
+                        <option>California Pizza Kitchen at Santa Barbara</option>
+                        <option>Sam's To Go</option>
+                        <option>Venus in Furs</option>
+                        <option>Sun Sushi</option>
+                        <option>Chipotle Mexican Grill</option>
+                        <option>Bossie's Kitchen</option>
+                        <option>Gelson's</option>
+                        <option>Sandbar</option>
+                        <option>The Set</option>
+                        <option>Angel Oak</option>
+                        <option>Barbareño</option>
+                        <option>AR Catering</option>
+                        <option>Super Cuca's Restaurant</option>
+                        <option>The Natural Cafe</option>
+                        <option>The Neighborhood Bar</option>
+                        <option>La Super-Rica Taqueria</option>
+                        <option>Teru Japanese Cuisine</option>
+                        <option>Mr B Restaurant & Cafe</option>
+                        <option>Little Kitchen</option>
+                        <option>Lito's Take Out</option>
+                        <option>Char West</option>
+                        <option>Olio E Limone Ristorante</option>
+                        <option>Tacos Pipeye</option>
+                        <option>Mandarin Palace</option>
+                        <option>Louie's California Bistro</option>
+                        <option>Taqueria El Buen Gusto</option>
+                        <option>Del Pueblo Cafe</option>
+                        <option>Gloria's Gourmet Kitchen</option>
+                        <option>MIZZA</option>
+                        <option>La Tapatia Bakery</option>
+                        <option>Norton's Pastrami & Deli</option>
+                        <option>Luna Grill</option>
+                        <option>Sachi Ramen And Robata Bar</option>
+                        <option>Shoreline Beach Cafe</option>
+                        <option>El Sitio</option>
+                        <option>Derf's Cafe</option>
+                        <option>Secret Bao</option>
+                        <option>Santo Mezcal</option>
+                        <option>Lilly's Tacos</option>
+                        <option>The Roundhouse</option>
+                        <option>Cali-Forno Pizzeria</option>
+                        <option>Milpas Taqueria</option>
+                        <option>Sam's to Go - Milpas</option>
+                        <option>Arigato Sushi</option>
+                        <option>Rudy's Restaurant No 1</option>
+                        <option>The Blue Owl</option>
+                        <option>Choi's Oriental Market</option>
+                        <option>Café Lido</option>
+                        <option>Empty Bowl Gourmet Noodle Bar</option>
+                        <option>Bettina</option>
+                        <option>Your Choice</option>
+                        <option>Denny's</option>
+                        <option>Galanga Thai Restaurant</option>
+                        <option>China Palace</option>
+                        <option>Zaytoon</option>
+                        <option>El Rincon Alteno</option>
+                        <option>Burger Express</option>
+                        <option>Lucky Penny</option>
+                        <option>Petit Valentien</option>
+                        <option>Rudy's</option>
+                        <option>Uncle Roccos Famous NY Pizza</option>
+                        <option>Garrett's Old Fashioned Restaurant</option>
+                        <option>El Sitio</option>
+                        <option>The Lark</option>
+                        <option>La Playa Azul Cafe</option>
+                        <option>Oku</option>
+                        <option>Night Lizard Brewing Company</option>
+                        <option>Arnoldi's Cafe</option>
+                        <option>Joe's Cafe</option>
+                        <option>Jill's Place</option>
+                        <option>Cody's Cafe</option>
+                        <option>Yona Redz</option>
+                        <option>Uncorked Wine Tasting and Kitchen</option>
+                        <option>China Pavilion</option>
+                        <option>Taco Bell</option>
+                        <option>Patxi's Pizza</option>
+                        <option>Corner Tap Room</option>
+                        <option>Moby Dick Restaurant</option>
+                        <option>Olio Pizzeria</option>
+                        <option>Eller's Doughnut House & Bakery</option>
+                        <option>Goat Tree</option>
+                        <option>Boathouse at Hendry's Beach</option>
+                        <option>The Creekside Restaurant & Bar</option>
+                        <option>The Daisy Restaurant</option>
+                        <option>Blackbird</option>
+                        <option>Via Maestra 42</option>
+                        <option>Shang Hai</option>
+                        <option>Kyoto</option>
+                        <option>Mesa Verde</option>
+                        <option>Yellow Belly</option>
+                        <option>Mesa Burger - Santa Barbara</option>
+                        <option>Convivo Restaurant and Bar</option>
+                        <option>The Honor Bar</option>
+                        <option>Lemon Tree Inn</option>
+                        <option>Cesar's Place</option>
+                        <option>Sushi Bar 29</option>
+                    </select>
+                                        
+                    <br><br>
+        
+                    <button id="filter">Filter!</button>
+                </div>
+                <hr style="border: 0; height: 2px; background-color: #fdb827; margin-right: 200px;" />
+                <div class="col-md-12"> <!-- Item # 2 -->
+                    <h4>Restaurants live and die by Customer Reviews!</h4>
+                    <p>Let this histogram help you pick a Restaurant this weekend. Pick a restaurant from our drop menu and hover over each bar to see its average rating and how many customers decided it was worth reviewing!</p>
+                </div>
+                <hr style="border: 0; height: 2px; background-color: #fdb827; margin-right: 200px;" />
+                <div class="col-md-12"> <!-- Item # 3 -->
+                    <div id="histogram" style="width: 100%; height: 500px;"></div>
+                </div>
+            </div>
+            <style>
+                .fixed-size-img {
+                    width: 100%;
+                    height: 354px;
+                    object-fit: cover;
+                }
+            </style>
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <img src="https://media.istockphoto.com/id/868408746/photo/assorted-indian-dish.jpg?s=2048x2048&w=is&k=20&c=WIUXa_BOsldeI9KJB3HEVuG70yd4F1SlBuwwiHtbSJw=" 
+                        alt="Assorted Indian Dish"
+                        class="img-fluid fixed-size-img">
+                </div>
+                <br/>
+                <div class="col-md-12">
+                    <img src="https://media.istockphoto.com/id/1423092276/photo/business-lunch-in-cafe-tasty-food-on-table-pizza-with-greenery-mozzarella-cheese-bacon-fried.jpg?s=2048x2048&w=is&k=20&c=QCJ2YNvjKWLB9KUH5xMFjkebasHn94SkbQfNWnq6Cn8=" 
+                        alt="Business Lunch in Cafe"
+                        class="img-fluid fixed-size-img">
+                </div>
+            </div>
         </div>
     </div>
 
