@@ -1,3 +1,38 @@
+function do_both() {
+    // Check for min_stars_filter => run if so
+    if (document.getElementById("min_stars_filter")) {
+        let min_stars = d3.select("#min_stars_filter").property("value");
+        min_stars = parseInt(min_stars);
+
+        // Make URL request for dashboard
+        let url_dashboard = `/api/v1.0/get_dashboard/${min_stars}`;
+        d3.json(url_dashboard).then(function (data) {
+            
+            // Create the graphs
+            make_donut(data.donut_data);
+            make_table(data.table_data);
+            make_map(data.map_data);
+        }).catch(function(error) {
+            console.error('Error:', error);
+        });
+    }
+
+    // Check for restaurant_filter => run if so
+    if (document.getElementById("restaurant_filter")) {
+        let restaurant = d3.select("#restaurant_filter").property("value");
+
+        // Modify URL based on "All" selection
+        let url_histogram = restaurant === "All" ? `/api/v1.0/get_histogram` : `/api/v1.0/get_histogram/${restaurant}`;
+
+        // Make URL request for histogram
+        d3.json(url_histogram).then(function (histogram_data) {
+            make_histogram(histogram_data);
+        }).catch(function(error) {
+            console.error('Error:', error);
+        });
+    }
+}
+
 function do_dashboard() {  // THIS NEED TO BE 2 FUNCTIONS???
     // Extract user input
     let min_stars = d3.select("#min_stars_filter").property("value");
@@ -163,5 +198,6 @@ d3.select(`#filter`).on("click", do_dashboard);
 d3.select(`#filter`).on("click", do_histogram);
 
 // Use default on first loading page
-do_dashboard();
-do_histogram();
+do_both();
+// do_dashboard();
+// do_histogram();
