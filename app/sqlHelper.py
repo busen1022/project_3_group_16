@@ -63,10 +63,7 @@ class SQLHelper():
         data = df.to_dict(orient="records")
         return(data)
 
-    def get_donut(self, min_stars):
-
-        # switch on min_stars
-        min_stars = 0
+    def get_donut(self, min_stars=0):
 
         # build the query
         query = f"""
@@ -87,10 +84,7 @@ class SQLHelper():
         data = df.to_dict(orient="records")
         return(data)
 
-    def get_table(self, min_stars):
-
-        # switch on min_stars
-        min_stars = 0
+    def get_table(self, min_stars=0):
 
         # build the query
         query = f"""
@@ -114,10 +108,7 @@ class SQLHelper():
         data = df.to_dict(orient="records")
         return(data)
 
-    def get_map(self, min_stars):
-
-        # switch on min_stars
-        min_stars = 0
+    def get_map(self, min_stars=0):
 
         # build the query
         query = f"""
