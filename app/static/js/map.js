@@ -15,7 +15,7 @@ function make_map(data) {
   
     // Step 2: Create the Overlay layers
     let markers = L.markerClusterGroup();
-//     let heatArray = [];
+    let heatArray = [];
   
     for (let i = 0; i < data.length; i++){
       let row = data[i];
@@ -37,15 +37,15 @@ function make_map(data) {
       marker.bindPopup(popup);
       markers.addLayer(marker);
   
-//       // add to heatmap
-//       heatArray.push(point);
+      // add to heatmap
+      heatArray.push(point);
     }
   
-//     // create layer
-//     let heatLayer = L.heatLayer(heatArray, {
-//       radius: 25,
-//       blur: 20
-//     });
+    // create layer
+    let heatLayer = L.heatLayer(heatArray, {
+      radius: 25,
+      blur: 20
+    });
   
     // Step 3: BUILD the Layer Controls
   
@@ -57,7 +57,7 @@ function make_map(data) {
   
     let overlayLayers = {
       Markers: markers,
-//       Heatmap: heatLayer
+      Heatmap: heatLayer
     }
   
 //     // Step 4: INIT the Map
@@ -80,21 +80,7 @@ function make_map(data) {
   
   }
   
-// //   Function do_dashboard() {  // THIS NEED TO BE 2 FUNCTIONS???
-//     // Extract user input
-//     let min_stars = d3.select("#min_stars_filter").property("value");
-//     min_stars = parseInt(min_stars);
-    
-//     // Make url request
-//     let url_dashboard = `/api/v1.0/get_dashboard/${min_stars}`;
-//     d3.json(url_dashboard).then(function (data) {
 
-//     // Create the graphs
-//     make_donut(data.donut_data)
-//     make_table(data.table_data)
-//     make_map(data.map_data)
-//     });
-// }
   
   // event listener for CLICK on Button
   d3.select("#filter").on("click", make_map);
