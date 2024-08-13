@@ -32,9 +32,9 @@ def dashboard():
 # CHECK THIS ONE - def map()?
 
 
-@app.route("/histogram")
-def histogram():
-    return render_template("histogram.html")
+@app.route("/restaurant")
+def restaurant():
+    return render_template("restaurant.html")
 
 @app.route("/about_us")
 def about_us():
@@ -67,16 +67,16 @@ def get_dashboard(min_stars):
     }
     return(jsonify(data))
 
-@app.route("/api/v1.0/get_histogram/<restaurant>")
-def get_histogram(restaurant):
+@app.route("/api/v1.0/get_restaurant/<restaurant>")
+def get_restaurant(restaurant):
     # try:
         logging.debug(f"Request received for restaurant: {restaurant}")
                       
-        # Fetch histogram data
-        histogram_data = sql.get_histogram(restaurant)
+        # Fetch restaurant data
+        restaurant_data = sql.get_restaurant(restaurant)
         
         # Return the data as JSON
-        return jsonify(histogram_data)
+        return jsonify(restaurant_data)
     
 
 # Run the App

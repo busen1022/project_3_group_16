@@ -70,7 +70,7 @@ function make_map(data) {
   
     let myMap = L.map("map", {
       center: [34.4208, -119.6982],
-      zoom: 5,
+      zoom: 12,
       layers: [street, markers]
     });
   
@@ -80,9 +80,5 @@ function make_map(data) {
   
   }
   
-
-  
-  // event listener for CLICK on Button
-  d3.select("#filter").on("click", make_map);
   
   make_map();

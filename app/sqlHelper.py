@@ -34,7 +34,7 @@ class SQLHelper():
     #################################################
 
     # USING RAW SQL
-    def get_histogram(self, restaurant):
+    def get_restaurant(self, restaurant):
 
         if restaurant == "ALL":
             where_clause = "1=1"

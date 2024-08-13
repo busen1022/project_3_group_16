@@ -22,11 +22,11 @@ function do_both() {
         let restaurant = d3.select("#restaurant_filter").property("value");
 
         // Modify URL based on "All" selection
-        let url_histogram = restaurant === "All" ? `/api/v1.0/get_histogram` : `/api/v1.0/get_histogram/${restaurant}`;
+        let url_restaurant = restaurant === "All" ? `/api/v1.0/get_restaurant` : `/api/v1.0/get_restaurant/${restaurant}`;
 
-        // Make URL request for histogram
-        d3.json(url_histogram).then(function (histogram_data) {
-            make_histogram(histogram_data);
+        // Make URL request for restaurant
+        d3.json(url_restaurant).then(function (restaurant_data) {
+            make_restaurant(restaurant_data);
         }).catch(function(error) {
             console.error('Error:', error);
         });
@@ -35,7 +35,7 @@ function do_both() {
 
 function do_dashboard() {  // THIS NEED TO BE 2 FUNCTIONS???
     // Extract user input
-    let min_stars = d3.select("#min_stars_filter").property("value");
+    let min_stars = d3.select("#filter").property("value");
     min_stars = parseInt(min_stars);
     
     // Make url request
@@ -49,17 +49,17 @@ function do_dashboard() {  // THIS NEED TO BE 2 FUNCTIONS???
     });
 }
 
-function do_histogram() {  // THIS NEED TO BE 2 FUNCTIONS???
+function do_restaurant() {  // THIS NEED TO BE 2 FUNCTIONS???
     // console.log('test')
     // Extract user input
     let restaurant = d3.select("#restaurant_filter").property("value");
     
     // Make url request
-    let url_histogram = `/api/v1.0/get_histogram/${restaurant}`;
-    d3.json(url_histogram).then(function (histogram_data) {
+    let url_restaurant = `/api/v1.0/get_restaurant/${restaurant}`;
+    d3.json(url_restaurant).then(function (restaurant_data) {
 
-    // Create the histogram
-    make_histogram(histogram_data)
+    // Create the restaurant
+    make_restaurant(restaurant_data)
     }).catch(function(error) {
         console.error('Error:', error);
     });;    
@@ -119,10 +119,10 @@ function make_table(filtered_data) {
     $('#data_table').DataTable();
   }
 
-  function make_histogram(histogram_data) {
+  function make_restaurant(restaurant_data) {
 
-    console.log("Histogram Data:", histogram_data); // Log the data
-    console.log("Number of Data Points:", histogram_data.length);
+    console.log("restaurant Data:", restaurant_data); // Log the data
+    console.log("Number of Data Points:", restaurant_data.length);
 
     // Get the selected restaurant from the filter
     let restaurant = d3.select("#restaurant_filter").property("value");
@@ -132,11 +132,11 @@ function make_table(filtered_data) {
 
     // Parse the date, Group by Month
     let dataByMonth = d3.group(
-        histogram_data, 
+        restaurant_data, 
         d => d3.timeMonth(parseDate(d.date))
     );
 
-    // Lists for histogram
+    // Lists for restaurant
     const hist_x = [];
     const hist_y = [];
     const hist_text = [];
@@ -148,7 +148,7 @@ function make_table(filtered_data) {
         hist_text.push(`Reviews: ${values.length}`);
     });
 
-    // Trace for the Histogram
+    // Trace for the restaurant
     let hist_trace = {
         x: hist_x,
         y: hist_y,
@@ -190,9 +190,9 @@ function make_table(filtered_data) {
         }
     };
 
-    // Render plot with div tag histogram
+    // Render plot with div tag restaurant
     try {
-        Plotly.newPlot("histogram", data, layout);
+        Plotly.newPlot("restaurant", data, layout);
     } catch (error) {
         console.error("Plotly Error:", error);
     }
@@ -200,10 +200,14 @@ function make_table(filtered_data) {
 };
 
 // Event Listener for Filter Click
-d3.select(`#filter`).on("click", do_dashboard);
-d3.select(`#filter`).on("click", do_histogram);
+
+d3.select("#filter").on("click", do_dashboard);
+d3.select("#restaurant_filter").on("click", do_restaurant);
+
+
 
 // Use default on first loading page
 do_both();
 // do_dashboard();
-// do_histogram();
+// do_restaurant();
+
