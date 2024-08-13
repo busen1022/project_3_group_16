@@ -67,16 +67,19 @@ function do_histogram() {  // THIS NEED TO BE 2 FUNCTIONS???
 
 
 function make_donut(filtered_data) {
-    // // sort values
-    filtered_data.sort((a, b) => (b.popularity - a.popularity));
-    // // extract data for pie chart
-    let donut_data = filtered_data.map(x => x.popularity);
-    let donut_labels = filtered_data.map(x => x.category_name);
+    console.log(filtered_data)
+    
+    let top_5_data = filtered_data.sort((a, b) => b.count - a.count).slice(0, 5);
+
+    // Extract the count and categories from the top 10 data array
+    let donut_data = top_5_data.map(x => x.count);
+    let donut_labels = top_5_data.map(x => x.categories);
+        
     let trace1 = {
             values: donut_data,
             labels: donut_labels,
             type: 'pie',
-            hoverinfo: 'label+percent+name',
+            hoverinfo: 'label+percent',
             hole: 0.4,
             name: "Category Popularity"
         }
@@ -84,7 +87,8 @@ function make_donut(filtered_data) {
     let data = [trace1];
     // // Apply a title to the layout
     let layout = {
-        title: "Popular Categories",
+        title: "Popular Food Groups",
+        
     }
     Plotly.newPlot("donut_chart", data, layout);
     }
