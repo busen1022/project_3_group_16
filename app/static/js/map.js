@@ -33,7 +33,7 @@ function make_map(data) {
 
       // make marker
       let marker = L.marker(point);
-      let popup = `<h1>${row.name}</h1><hr><h2>${row.stars}</h2><hr><h3>${row.category} | ${row.total_reviews}</h3>`;
+      let popup = `<h1>${row.name}</h1><hr><h2>${row.stars} Stars</h2><hr><h3>${row.category}</h3><h3>${row.total_reviews} Reviews</h3>`;
       marker.bindPopup(popup);
       markers.addLayer(marker);
   
