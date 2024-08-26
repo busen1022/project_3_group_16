@@ -2,7 +2,7 @@
 
 This README is for Project 3 - Interactive Dashboard Visualization of the Data Bootcamp April Session.
 
-![License](https://github.com/busen1022/project_3_group_16/blob/main/LICENSE)
+[License](https://github.com/busen1022/project_3_group_16/blob/main/LICENSE)
 
 ## Table of contents
 
